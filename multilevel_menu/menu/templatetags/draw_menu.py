@@ -11,15 +11,22 @@ register = template.Library()
 @register.inclusion_tag('includes/menu.html', takes_context=True)
 def draw_menu(context: Any, menu: str) -> Dict[str, Dict]:
     """Строим словарь, моделирующий меню."""
+    # Слаг выбранного пункта меню
     item: str | None = context.request.resolver_match.kwargs.get('item', None)
+    # Все пункты текущего меню
     all_menu: QuerySet = Item.objects.filter(
         menu__slug=menu).select_related('parent')
+    # Если выбранный пункт в текущем меню, то получаем
+    # его родительские и дочерние элементы
     if item_in_this_menu(all_menu, item):
         parents: List[Item | None] = get_parents(all_menu, item)
         childrens: Dict[Item, Dict[None, None]] = get_childrens(all_menu, item)
+    # Если выбранный пункт не в текущем меню, то получаем только
+    # пунткы верхнего уровня
     else:
         parents = childrens = {}
     temp = {}
+    # Строим дерево от выбранного пункта до верхнего уровня
     for parent in parents:
         for element in all_menu:
             if element.parent == parent:
@@ -27,6 +34,7 @@ def draw_menu(context: Any, menu: str) -> Dict[str, Dict]:
         childrens = dict(temp)
         item = parent.slug
         temp = {}
+    # Получаем пункты верхнего уровня
     for element in main(all_menu):
         temp[element] = childrens if element.slug == item else {}
     childrens = dict(temp)
