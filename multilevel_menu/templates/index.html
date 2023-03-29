@@ -1,0 +1,25 @@
+{% load draw_menu %}
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ item }}</title>
+  </head>
+  <body>
+    <main>
+      <aside>
+        <nav>
+          {% draw_menu 'animals' %}
+          {% draw_menu 'fish' %}
+        </nav>
+      </aside>
+    
+      <section >
+        <div>
+          <h1>{{ item }}</h1>
+        </div>
+      </section>
+    </main>  
+  </body>
+</html>

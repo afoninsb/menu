@@ -1,0 +1,13 @@
+<ul>
+  {% for key, value in items.items %}
+    <li>
+      <a href="{% url 'menu:item' key.slug %}">{{ key.title }}</a>
+    </li>
+    {% if value %}
+      {% include 'includes/menu.html' with items=value %}
+    {% endif %}
+  {% endfor %}
+</ul>
+
+
+
