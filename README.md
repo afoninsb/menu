@@ -8,9 +8,11 @@
   git clone git@github.com:afoninsb/menu.git
 ```
 
-2. Перейти в папку проекта и *<путь>/menu/multilevel_menu/* и запустить терминал из неё.
+2. Переименовать файл *<путь>/menu/.env.dist* в *<путь>/menu/.env*
 
-3. Дать команду:
+3. Перейти в папку проекта и *<путь>/menu/multilevel_menu/* и запустить терминал из неё.
+
+4. Дать команду:
 
 ```bash
   sh run.sh
