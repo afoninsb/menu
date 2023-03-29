@@ -1,6 +1,26 @@
-# menu
+# Многоуровневое меню
 
+## Для запуска:
 
-    {% if item.childrens.all %}
-      {% include 'includes/menu.html' with items=item.childrens.all %}
-    {% endif %}
+1. Клонировать проект на свой ПК:
+
+```bash
+  git clone git@github.com:afoninsb/menu.git
+```
+
+2. Перейти в папку проекта и *<путь>/menu/multilevel_menu/* и запустить терминал из неё.
+
+3. Дать команду:
+
+```bash
+  sh run.sh
+```
+При этом выполнятся следующие действия:
+ - миграции
+ - загрузятся тестовые данные (по желанию)
+ - создастся суперпользователь (по желанию)
+ - запустится сервер
+
+## Контакт
+
+Готов ответить на любые вопросы в Telegram [@afoninsb](https://t.me/afoninsb)
